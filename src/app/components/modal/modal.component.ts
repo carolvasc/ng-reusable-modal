@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal',
@@ -9,13 +9,15 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ModalComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<ModalComponent>
-  ) { }
+    public dialogRef: MatDialogRef<ModalComponent>,
+    @Inject(MAT_DIALOG_DATA) private modalData: any,
+  ) { 
+    console.log(this.modalData);
+  }
 
   ngOnInit() { }
 
   actionFunction() {
-    alert("I am a work in progress");
     this.closeModal();
   }
 
